@@ -1,0 +1,150 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Filter Section -->
+    <div class="col-md-3">
+      <div class="filter-section">
+        <div class="row" class="filter">
+          <span>FILTERS</span>
+        </div>
+        <!-- Color Filter (Checkboxes) -->
+        <div class="filter-card">
+          
+          <div class="filter-header">
+            <h4>Colors</h4>
+          </div>
+
+          <div class="brand-options">
+            <div class="brand-card" *ngFor="let color of colors">
+
+              <label>{{ color.name }}</label>
+
+              <input type="checkbox" class="brand-checkbox"
+                     [(ngModel)]="color.selected" 
+                     (change)="applyFilters()" 
+                     [value]="color.name" /> 
+            </div>
+          </div>
+
+        </div>
+
+        <div class="filter-card">
+          <!-- Brand Header: "Brand" and "Clear All" -->
+          <div class="filter-header">
+            <h4>Brand</h4>
+            <span class="clear-all" (click)="clearAllBrands()">Clear All</span>
+          </div>
+        
+          <!-- Brand Checkbox Cards with Scrollable Container -->
+          <div class="brand-options">
+            <div class="brand-card" *ngFor="let brand of brands">
+              <!-- Brand Name First, then Checkbox -->
+              <label>{{ brand.name }}</label>
+              <input type="checkbox" 
+                     [(ngModel)]="brand.selected" 
+                     (change)="applyFilters()" class="brand-checkbox" />
+            </div>
+          </div>
+        </div>
+        
+
+    <!-- Type Filter (Radio Buttons) -->
+      <div class="filter-card">
+        <div class="filter-header">
+          <h4>Types</h4>
+          <span class="clear-all" (click)="clearType()">Clear All</span>
+        </div>
+
+        <div class="brand-options">
+          <div class="brand-card" *ngFor="let type of types">
+            <!-- Label First, Then Radio Button -->
+            <label>{{ type.name }}
+              <input type="radio" 
+                    [(ngModel)]="selectedType"
+                    [value]="type.name" 
+                    (change)="applyFilters()" class="brand-checkbox" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+    <!-- Product Display Section -->
+    <div class="col-md-9">
+      <!-- Search Section -->
+      <div class="search-section">
+        <input type="text" 
+               class="search-input" 
+               placeholder="Search for products..." 
+               [(ngModel)]="searchQuery" 
+               (input)="applySearch()" />
+      </div>
+    
+      <!-- Product Display Section -->
+      <div class="row">
+        <div class="product-card" *ngFor="let product of filteredProducts"  (click)="openProductModal(product, productModal)">
+          <!-- Product Image with Color Label -->
+          <div class="product-image-container">
+            <img [src]="product.pdtImg" alt="{{product.pdtName}}" class="product-image" />
+            <span class="color-label">{{ product.color }}</span>
+          </div>
+        
+          <!-- Product Name -->
+          <div class="product-name">{{ product.pdtName }}</div>
+        
+          <!-- Product Category (Brand) -->
+          <div class="product-category">{{ product.pdtCategory }}</div>
+        
+          <!-- Product Price and Add to Cart Text -->
+          <div class="product-footer">
+            <span class="product-price">${{ product.pdtPrice }}</span>
+            <span class="add-to-cart" (click)="addToCart(product)">ADD TO CART</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+<ng-template #productModal let-modal>
+  <div class="modal-header">
+    <span (click)="modal.close()" class="close-btn">&#10005;</span> <!-- Cross Button -->
+    <img [src]="selectedProduct.pdtImg" alt="{{ selectedProduct.pdtName }}" class="product-image-modal" />
+    <div class="product-details">
+      <h5>{{ selectedProduct.pdtName }}</h5>
+      <p class="product-category">{{ selectedProduct.pdtCategory }}</p>
+      <p class="product-price">${{ selectedProduct.pdtPrice }}</p>
+      <p class="product-color">Color: {{ selectedProduct.color }}</p>
+    </div>
+  </div>
+  
+  <!-- Modal Body with Description and Reviews -->
+  <div class="modal-body">
+    <div class="tab-buttons">
+      <button (click)="showDescription = true" [class.active]="showDescription">Description</button>
+      <button (click)="showDescription = false" [class.active]="!showDescription">Reviews</button>
+    </div>
+  
+    <div class="content-section">
+      <!-- Description Section -->
+      <div *ngIf="showDescription" class="description-section">
+        <p>{{ selectedProduct.pdtDescription }}</p>
+
+        <div class="product-details-info">
+          <p><strong>UID:</strong> {{ selectedProduct.pdtUID }}</p>
+          <p><strong>Code:</strong> {{ selectedProduct.pdtCode }}</p>
+          <p><strong>Type:</strong> {{ selectedProduct.pdtType }}</p>
+        </div>
+      </div>
+  
+      <!-- Reviews Section -->
+      <div *ngIf="!showDescription" class="reviews-section">
+        <h6>Reviews</h6>
+        <p>{{ selectedProduct.avgFeedback }} ratings</p>
+      </div>
+    </div>
+  </div>
+</ng-template>

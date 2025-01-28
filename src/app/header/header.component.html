@@ -1,0 +1,51 @@
+<nav class="header" style="background-image: url('../assets/Images/topbar.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="logo">
+    <a routerLink="/">
+      <img src="../assets/Images/logo.png" [height]="50" [width]="50" alt="Logo" class="logo-image" />
+    </a>
+  </div>
+
+  <nav class="nav-links">
+    <a (click)="navigateTo('home')">Home</a>
+    <a (click)="navigateTo('products')">Products</a>
+    <a (click)="navigateTo('about-us')">About Us</a>
+    <a (click)="navigateTo('contact-us')">Contact Us</a>
+    <a (click)="openCardModal(cardModal)">Cart
+      <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+    </a>
+    <a (click)="navigateTo('login')">Login</a>
+  </nav>
+</nav>
+
+
+<ng-template #cardModal let-modal>
+  <div class="cart-modal">
+    <div class="cart-modal-header">
+      <h3>Cart</h3>
+      <button (click)="modal.dismiss()" class="close-btn">×</button>
+    </div>
+    <div class="cart-modal-body">
+      <!-- Display Cart Items -->
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <!-- Remove Button Positioned Top Right -->
+        <button (click)="removeFromCart(item)" class="remove-btn">Remove</button>
+        
+        <div class="cart-item-image">
+          <img [src]="item.pdtImg" alt="{{ item.pdtName }}" class="product-image" />
+        </div>
+        <div class="cart-item-details">
+          <p><strong>{{ item.pdtName }}</strong></p>
+          <p class="category">{{ item.pdtCategory }}</p>
+          <p><strong>${{ item.pdtPrice }}</strong></p>
+          <p><span class="color-label">{{ item.color }}</span></p>
+        </div>
+
+
+      </div>
+
+      <div class="col-sm-12">
+        <button class="btn checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

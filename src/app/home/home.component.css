@@ -1,0 +1,239 @@
+.product-card {
+    cursor: pointer;
+    width: 250px;  /* Adjust as needed */
+    margin: 25px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+  }
+
+  .filter{
+    margin-top: 10px;
+    margin-left: 3%;
+    font-weight: 500;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .product-category {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+  }
+  
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .product-price {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .add-to-cart {
+    font-size: 14px;
+    color: purple;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .add-to-cart:hover {
+    color: darkviolet;
+  }
+  
+  .filter-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .filter-header h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .clear-all {
+    color: purple;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  
+  .clear-all:hover {
+    color: darkviolet;
+  }
+  
+  .brand-options {
+    max-height: 130px; /* Adjust as needed */
+    overflow-y: auto;  /* Enable vertical scrolling */
+  }
+  
+  .brand-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;  /* Space between rows */
+  }
+  
+  .brand-card label {
+    font-size: 16px;   /* Increase font size of the brand name */
+    margin-right: 10px;  /* Space between brand name and checkbox */
+    flex: 1;  /* Allow label to take up remaining space */
+  }
+
+  .product-image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .color-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: lightgrey; /* Light grey background */
+    color: black; /* Text color */
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .search-section {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px; /* Optional: limit the width */
+    margin: 0 auto; /* Center the input */
+  }
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .product-image-modal {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+  
+  .product-details {
+    flex: 1;
+  }
+  
+  .product-details h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .product-category,
+  .product-price,
+  .product-color {
+    font-size: 0.9rem;
+    color: gray;
+  }
+  
+  /* Modal Body Styling */
+  .modal-body {
+    padding: 15px;
+  }
+  
+  .description-section,
+  .reviews-section {
+    margin-bottom: 20px;
+  }
+  
+  .description-section h6,
+  .reviews-section h6 {
+    font-weight: bold;
+  }
+  
+  .description-section p,
+  .reviews-section p {
+    color: #555;
+    font-size: 1rem;
+  }
+
+  .close-btn {
+    font-size: 1rem;
+    cursor: pointer;
+    color: #000;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 10px;
+  }
+
+  .product-details-info {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  
+  .product-details-info p {
+    margin: 5px 0;
+  }
+
+  .tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f1f1f1; /* Light grey background */
+    border: none;
+    padding: 10px 0;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .tab-buttons button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #000; /* Light purple */
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tab-buttons button.active {
+    color: #6a5acd; /* White text on active tab */
+    /* border-color: #6a5acd; */
+  }
+  
+  
