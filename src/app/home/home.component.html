@@ -99,7 +99,7 @@
           <!-- Product Price and Add to Cart Text -->
           <div class="product-footer">
             <span class="product-price">${{ product.pdtPrice }}</span>
-            <span class="add-to-cart" (click)="addToCart(product)">ADD TO CART</span>
+            <span class="add-to-cart" (click)="addToCart(product);$event.stopPropagation()">ADD TO CART</span>
           </div>
         </div>
       </div>
